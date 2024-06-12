@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disco Light Effect</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Disco Light</h1>
+        <button onclick="changeText()">Start Disco</button>
+        <button onclick="stopDisco()">Stop Disco</button>
+    </div>
+
+    <script>
+        let colors = ['red', 'green', 'blue', 'yellow', 'purple', 'pink', 'orange', 'cyan'];
+        let currentIndex = 0;
+        let intervalId = null;
+
+        function changeText() {
+            if (intervalId) return; // Prevent multiple intervals from being set
+            intervalId = setInterval(() => {
+                document.body.style.backgroundColor = colors[currentIndex];
+                currentIndex = (currentIndex + 1) % colors.length;
+            }, 500); // Change color every 500ms
+        }
+
+        function stopDisco() {
+            clearInterval(intervalId);
+            intervalId = null; // Reset intervalId
+            document.body.style.backgroundColor = 'black'; // Reset to black background
+        }
+    </script>
+</body>
+
+</html>
